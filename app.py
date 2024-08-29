@@ -15,7 +15,7 @@ from openai import OpenAI
 client = OpenAI()
 
 OPENAI_API_KEY = st.secrets.OPENAI_API_KEY
-HF_KEY = st.secrets.HF_KEY
+# HF_KEY = st.secrets.HF_KEY
 
 openai.api_key=OPENAI_API_KEY
 
