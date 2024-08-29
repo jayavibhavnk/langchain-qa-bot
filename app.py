@@ -83,7 +83,7 @@ def main():
     if "messages" not in st.session_state:
         st.session_state.messages = [{"role": "assistant", "content": "Ask me anything about Langchain"}]
 
-    st.title("Sparkflows Documentation")
+    st.title("Langchain Documentation")
     st.subheader("Ask anything about langchain")
 
     if st.session_state.vector_store is None:
