@@ -100,7 +100,6 @@ if customization_options['Generation_type'] == "Text":
         st.chat_message(msg["role"]).write(msg["content"])
 
     if prompt := st.chat_input():
-
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
         with st.spinner("Thinking..."):
