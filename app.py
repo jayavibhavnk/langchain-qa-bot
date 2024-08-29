@@ -16,8 +16,10 @@ client = OpenAI()
 
 OPENAI_API_KEY = st.secrets.OPENAI_API_KEY
 # HF_KEY = st.secrets.HF_KEY
-
 openai.api_key=OPENAI_API_KEY
+from langchain_openai import OpenAIEmbeddings
+
+embeddings = OpenAIEmbeddings()
 
 st.set_page_config(
         page_title="Langchain QA",
