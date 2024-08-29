@@ -34,7 +34,7 @@ def get_prompt():
     return system_message, human_message
 
 def get_conversation_chain(vector_store: FAISS, system_message: str, human_message: str) -> ConversationalRetrievalChain:
-    llm = ChatOpenAI(model="gpt-4", openai_api_key=st.secrets.OPENAI_API_KEY)
+    llm = ChatOpenAI(model="GPT-4o", openai_api_key=st.secrets.OPENAI_API_KEY)
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
@@ -81,10 +81,10 @@ def main():
         st.session_state.vector_store = None
 
     if "messages" not in st.session_state:
-        st.session_state.messages = [{"role": "assistant", "content": "Ask me anything about Sparkflows"}]
+        st.session_state.messages = [{"role": "assistant", "content": "Ask me anything about Langchain"}]
 
     st.title("Sparkflows Documentation")
-    st.subheader("Ask anything about the Sparkflows documentation")
+    st.subheader("Ask anything about langchain")
 
     if st.session_state.vector_store is None:
         load_faiss_embeddings("db_faiss")
