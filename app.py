@@ -56,7 +56,7 @@ def get_image_from_api(text):
 llm = ChatOpenAI(model="gpt-4o-mini")
 
 store = FAISS.load_local(
-"langchain_faiss_index", embeddings, allow_dangerous_deserialization=True
+"langchain_faiss_index", embeddings
 )
 
 retriever = store.as_retriever()
