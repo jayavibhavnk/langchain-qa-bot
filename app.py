@@ -53,18 +53,17 @@ def get_image_from_api(text):
 
     return image_bytes
 
+llm = ChatOpenAI(model="gpt-4o-mini")
+
+store = FAISS.load_local(
+"langchain_faiss_index", embeddings, allow_dangerous_deserialization=True
+)
+
+retriever = store.as_retriever()
+prompt = hub.pull("rlm/rag-prompt")
+
 def query_langchain(query):
       
-    llm = ChatOpenAI(model="gpt-4o-mini")
-
-    store = FAISS.load_local(
-    "langchain_faiss_index", embeddings, allow_dangerous_deserialization=True
-    )
-  
-    retriever = store.as_retriever()
-    prompt = hub.pull("rlm/rag-prompt")
-    
-    
     def format_docs(docs):
         return "\n\n".join(doc.page_content for doc in docs)
     
@@ -103,7 +102,7 @@ if customization_options['Generation_type'] == "Text":
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
         with st.spinner("Thinking..."):
-                msg = query_langchain(prompt)
+                msg = query_openai(prompt)
 
                 st.session_state.messages.append({"role": "assistant", "content": msg})
                 st.chat_message("assistant").write(msg)
