@@ -34,7 +34,7 @@ def get_prompt():
     return system_message, human_message
 
 def get_conversation_chain(vector_store: FAISS, system_message: str, human_message: str) -> ConversationalRetrievalChain:
-    llm = ChatOpenAI(model="GPT-4o", openai_api_key=st.secrets.OPENAI_API_KEY)
+    llm = ChatOpenAI(model="gpt-4o", openai_api_key=st.secrets.OPENAI_API_KEY)
     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
